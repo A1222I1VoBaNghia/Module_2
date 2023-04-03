@@ -29,7 +29,7 @@ public class Read_String_By_Number {
                 if (units==0){
                     System.out.print("Zero");
                 } else
-                    System.out.print(read_Units(units,true));
+                    System.out.print(readUnits(units,true));
             } else if(dozens==1){
                 switch (number){
                     case 10:
@@ -64,17 +64,17 @@ public class Read_String_By_Number {
                         break;
                 }
             } else{
-                System.out.print(read_Units(dozens,false)+" ");
-                System.out.print(read_Units(units,true));
+                System.out.print(readUnits(dozens,false)+" ");
+                System.out.print(readUnits(units,true));
             }
         } else {
-            System.out.print(read_Units(hundreds,true)+" hundred ");
+            System.out.print(readUnits(hundreds,true)+" hundred ");
             if(dozens==0){
                 System.out.print("");
                 if (units==0){
                     System.out.print("");
                 } else
-                    System.out.print(read_Units(units,true));
+                    System.out.print(readUnits(units,true));
             } else if(dozens==1){
                 switch (dozens*10+units){
                     case 10:
@@ -109,13 +109,13 @@ public class Read_String_By_Number {
                         break;
                 }
             } else{
-                System.out.print(read_Units(dozens,false)+" ");
-                System.out.print(read_Units(units,true));
+                System.out.print(readUnits(dozens,false)+" ");
+                System.out.print(readUnits(units,true));
             }
 
         }
     }
-    public static String  read_Units(int unit,boolean flag) {
+    public static String  readUnits(int unit,boolean flag) {
         String str;
         switch (unit) {
             case 1:

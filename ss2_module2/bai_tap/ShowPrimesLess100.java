@@ -3,12 +3,12 @@ package ss2_module2.bai_tap;
 public class show_Primes_less_100 {
     public static void main(String[] args) {
         for (int j = 0; j < 100; j++) {
-            if(check_is_Prime(j)!=0){
-            System.out.print(check_is_Prime(j) + ", ");
+            if(checkIsPrime(j)!=0){
+            System.out.print(checkIsPrime(j) + ", ");
             }
         }
     }
-    public static int check_is_Prime(int number) {
+    public static int checkIsPrime(int number) {
         boolean flag = true;
         if (number < 2) {
             flag = false;
