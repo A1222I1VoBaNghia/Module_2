@@ -1,4 +1,25 @@
-package FuramaResort.Services;
+package FuramaResort.Services.Impl;
 
-public class FacilityServiceImpl implements FacilityService{
+import FuramaResort.Services.IFacilityService;
+
+public class FacilityServiceImpl implements IFacilityService {
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void addNew() {
+
+    }
+
+    @Override
+    public void fix() {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
 }

@@ -1,4 +1,25 @@
-package FuramaResort.Services;
+package FuramaResort.Services.Impl;
 
-public class BookingServiceImpl implements BookingService{
+import FuramaResort.Services.IBookingService;
+
+public class BookingServiceImpl implements IBookingService {
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void addNew() {
+
+    }
+
+    @Override
+    public void fix() {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
 }

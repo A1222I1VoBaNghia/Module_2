@@ -1,2 +1,5 @@
-package ss7_module2.thuc_hanh;public class Edible {
+package ss7_module2.thuc_hanh;
+
+public interface Edible {
+    String howToEat();
 }

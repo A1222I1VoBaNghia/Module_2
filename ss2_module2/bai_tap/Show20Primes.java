@@ -2,7 +2,7 @@ package ss2_module2.bai_tap;
 
 import java.util.Scanner;
 
-public class show_20_Primes {
+public class Show20Primes {
     public static void main(String[] args) {
         int numbers = 0;
         Scanner input = new Scanner(System.in);

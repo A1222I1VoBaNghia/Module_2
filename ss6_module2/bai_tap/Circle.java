@@ -14,6 +14,12 @@ public class Circle {
         this.color = color;
     }
 
+    public Circle(double radius) {
+    }
+
+    public Circle(double radius, String color, boolean filler) {
+    }
+
     public double getRadius() {
         return radius;
     }

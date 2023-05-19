@@ -2,7 +2,7 @@ package ss2_module2.bai_tap;
 
 import java.util.Scanner;
 
-public class show_Image {
+public class ShowImage {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int choice = -1;

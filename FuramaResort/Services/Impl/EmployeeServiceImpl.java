@@ -1,66 +1,87 @@
-package FuramaResort.Services;
+package FuramaResort.Services.Impl;
 
 import FuramaResort.Models.Employee;
+import FuramaResort.Services.IEmployeeService;
 
+import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
 
-public class EmployeeServiceImpl extends Employee implements EmployeeService{
-    static Employee employee = new EmployeeServiceImpl();
-    static List <Employee> employeeArrayList = new ArrayList<>();
-    public EmployeeServiceImpl(String idName, String name, int age, String gender, int idCode, int numberPhone, String email) {
-        super(idName, name, age, gender, idCode, numberPhone, email);
+public class EmployeeServiceImpl extends Employee implements IEmployeeService {
+    static ArrayList<Employee> employeeList;
+    static {
+        File employeeFile = new File("D:\\Module_2bt\\FuramaResort\\Data\\employee.csv");
+        try {
+            OutputStream os = new FileOutputStream(employeeFile);
+            ObjectOutputStream oos = new ObjectOutputStream(os);
+            oos.writeObject(employeeList);
+            oos.close();
+            oos.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        employeeList = new ArrayList<>();
+        Employee employee = new Employee();
+
+    }
+    @Override
+    public void display() {
+        for(Employee e: employeeList){
+            System.out.println(e.toString());
+        }
     }
 
-    public EmployeeServiceImpl(String idName, String name, int age, String gender, int idCode, int numberPhone, String email, String level, String regency, int salary) {
-        super(idName, name, age, gender, idCode, numberPhone, email, level, regency, salary);
-    }
-
-    public EmployeeServiceImpl() {
-    }
-
-    public static void displayEmploye(){
-
-    }
-    public static void addEmployee(){
-        System.out.println("*****Add Employee*****");
+    @Override
+    public void addNew() {
+        Employee employee = new Employee();
         employee.setIdName();
-        employee.setName();
-        employee.setAge();
-        employee.setGender();
-        employee.setIdCode();
-        employee.setNumberPhone();
-        employee.setEmail();
-        employee.setLevel();
-        employee.setRegency();
-        employee.setSalary();
-        employeeArrayList.add(employee);
-        System.out.println(employee.toString());
+        enterPersonalInfomation(employee);
+        employeeList.add(employee);
     }
-    public static void fixEmployee(String idName){
-       for(Employee ignored : employeeArrayList){
-            if(employee.getIdName().equals(idName)){
-            System.out.println("*****Fix Employee*****");
-            employee.setName();
-            employee.setAge();
-            employee.setGender();
-            employee.setIdCode();
-            employee.setNumberPhone();
-            employee.setEmail();
-            employee.setLevel();
-            employee.setRegency();
-            employee.setSalary();
-            employeeArrayList.add(employee);
+
+    @Override
+    public void fix() {
+        System.out.println("Enter IDName need to fix:");
+        Scanner input = new Scanner(System.in);
+        String idNameNeedFix = input.nextLine();
+        if(checkIDName(idNameNeedFix)!=null){
+            enterPersonalInfomation(Objects.requireNonNull(checkIDName(idNameNeedFix)));
         }else {
-            System.out.println("IDName "+ idName+ " not exist!");
-        }}
-
+            System.out.println("Not exist IDName you Enter");
+        }
     }
 
-    public static void main(String[] args) {
-        addEmployee();
-        fixEmployee("A123");
-
+    private void enterPersonalInfomation(Employee e) {
+        e.setName();
+        e.setAge();
+        e.setGender();
+        e.setNumberPhone();
+        e.setEmail();
+        e.setLevel();
+        e.setIdCode();
+        e.setRegency();
+        e.setSalary();
     }
+    private Employee checkIDName(String idNameNeedFix){
+        for(Employee e: employeeList){
+            if(e.getIdName().equals(idNameNeedFix)){
+            return e;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void delete() {
+        System.out.println("Enter IDName need to delete:");
+        Scanner input = new Scanner(System.in);
+        String idNameNeedDel = input.nextLine();
+        if(checkIDName(idNameNeedDel)!=null){
+            employeeList.remove(checkIDName(idNameNeedDel));
+        }
+    }
+
+
 }
 

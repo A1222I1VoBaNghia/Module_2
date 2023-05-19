@@ -2,7 +2,7 @@ package ss3_module2.bai_tap;
 
 import java.util.Scanner;
 
-public class find_Min {
+public class FindMin {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập kích thước của mảng:");

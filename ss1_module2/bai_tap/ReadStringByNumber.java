@@ -5,7 +5,7 @@ package ss1_module2.bai_tap;
 import java.util.Scanner;
 import java.lang.String;
 
-public class Read_String_By_Number {
+public class ReadStringByNumber {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

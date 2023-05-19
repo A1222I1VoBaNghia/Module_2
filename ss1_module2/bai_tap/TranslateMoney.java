@@ -1,10 +1,8 @@
 package ss1_module2.bai_tap;
 
-import com.sun.org.apache.bcel.internal.Const;
-
 import java.util.Scanner;
 
-public class Translate_Money {
+public class TranslateMoney {
     public static void main(String[] args) {
         final int RATE = 23000;
         Scanner scanner = new Scanner(System.in);

@@ -2,7 +2,7 @@ package ss3_module2.bai_tap;
 
 import java.util.Scanner;
 
-public class find_Max_In_Array2D {
+public class FindMaxInArray2D {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập chiều rộng ma trận:");

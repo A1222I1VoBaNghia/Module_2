@@ -1,6 +1,6 @@
 package ss2_module2.bai_tap;
 
-public class show_Primes_less_100 {
+public class ShowPrimesLess100 {
     public static void main(String[] args) {
         for (int j = 0; j < 100; j++) {
             if(checkIsPrime(j)!=0){

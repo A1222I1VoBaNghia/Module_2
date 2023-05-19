@@ -1,7 +1,7 @@
 package ss3_module2.bai_tap;
 
 import java.util.Scanner;
-public class mix_Array {
+public class MixArray {
     public static int[] createArray() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập kích thước của mảng:");

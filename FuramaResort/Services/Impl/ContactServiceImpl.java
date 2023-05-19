@@ -1,4 +1,25 @@
-package FuramaResort.Services;
+package FuramaResort.Services.Impl;
 
-public class ContactServiceImpl implements ContactService{
+import FuramaResort.Services.IContactService;
+
+public class ContactServiceImpl implements IContactService {
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void addNew() {
+
+    }
+
+    @Override
+    public void fix() {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
 }
