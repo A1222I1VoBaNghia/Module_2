@@ -2,6 +2,7 @@ package FuramaResort.Services.Impl;
 
 import FuramaResort.Models.Employee;
 import FuramaResort.Services.IEmployeeService;
+import FuramaResort.Utils.EmployeeUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,33 +12,32 @@ import java.util.Scanner;
 public class EmployeeServiceImpl extends Employee implements IEmployeeService {
     static ArrayList<Employee> employeeList;
     static {
-        File employeeFile = new File("D:\\Module_2bt\\FuramaResort\\Data\\employee.csv");
-        try {
-            OutputStream os = new FileOutputStream(employeeFile);
-            ObjectOutputStream oos = new ObjectOutputStream(os);
-            oos.writeObject(employeeList);
-            oos.close();
-            oos.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         employeeList = new ArrayList<>();
         Employee employee = new Employee();
+        }
 
-    }
     @Override
     public void display() {
-        for(Employee e: employeeList){
-            System.out.println(e.toString());
+        try {
+            for(Employee e: EmployeeUtils.readFileList()){
+                System.out.println(e.toString());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public void addNew() {
         Employee employee = new Employee();
-        employee.setIdName();
+        employee.setIdEmoployee();
         enterPersonalInfomation(employee);
         employeeList.add(employee);
+        try {
+            EmployeeUtils.writeFileList(employee);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -45,8 +45,14 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
         System.out.println("Enter IDName need to fix:");
         Scanner input = new Scanner(System.in);
         String idNameNeedFix = input.nextLine();
-        if(checkIDName(idNameNeedFix)!=null){
-            enterPersonalInfomation(Objects.requireNonNull(checkIDName(idNameNeedFix)));
+        Employee employee = checkIDName(idNameNeedFix);
+        if(employee!=null){
+            enterPersonalInfomation(employee);
+            try {
+                    EmployeeUtils.fixFileList(employee);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }else {
             System.out.println("Not exist IDName you Enter");
         }
@@ -64,10 +70,14 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
         e.setSalary();
     }
     private Employee checkIDName(String idNameNeedFix){
-        for(Employee e: employeeList){
-            if(e.getIdName().equals(idNameNeedFix)){
-            return e;
+        try {
+            for(Employee e: EmployeeUtils.readFileList()){
+                if(e.getIdEmoployee().equals(idNameNeedFix)){
+                return e;
+                }
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }

@@ -12,6 +12,7 @@ public class FuramaController {
     public static void displayMainMenu() {
         boolean check = true;
         while (check) {
+            System.out.println("----------Furama Resort Management----------");
             System.out.println("1. Employee Management");
             System.out.println("2. Customer Management");
             System.out.println("3.Facility Management");
